@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import useStore from "../store";
 
 const Navbar = () => {
+  const setModal = useStore((state) => state.setIsModal);
+
   return (
     <div className="flex justify-between items-center mb-5">
       <h1 className="font-logo text-5xl font-bold text-white">Todolist</h1>
-      <button className="text-white">
+      <button className="text-white" onClick={setModal}>
         <svg
           class="w-10 h-10"
           fill="none"
