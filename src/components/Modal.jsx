@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import useStore from "../store";
 
 const Modal = () => {
-  const modal = useStore();
+  const state = useStore();
+  const [todo, setTodo] = useState("");
 
-  return modal.modal ? (
+  return state.modal ? (
     <div className="h-full w-full absolute top-0 right-0 bg-black bg-opacity-60">
       <div className="my-48 bg-secondary text-white mx-4 p-4 rounded-xl">
         <div className="flex justify-between mb-5">
           <h1 className="text-lg font-bold">Add Todo</h1>
-          <button onClick={() => modal.setModal(false)}>
+          <button onClick={() => state.setModal(false)}>
             <svg
               class="w-6 h-6"
               fill="none"
@@ -27,8 +28,20 @@ const Modal = () => {
           </button>
         </div>
         <div className="flex justify-between gap-2">
-          <input type="text" className="text-black text-2xl rounded-md" />
-          <button className="bg-tertiary py-2 px-2 rounded-md">Add</button>
+          <input
+            type="text"
+            onChange={(e) => setTodo(e.target.value)}
+            className="text-black text-2xl rounded-md"
+          />
+          <button
+            onClick={() => {
+              state.addTodo(todo);
+              state.setModal(false);
+            }}
+            className="bg-tertiary py-2 px-2 rounded-md"
+          >
+            Add
+          </button>
         </div>
       </div>
     </div>
