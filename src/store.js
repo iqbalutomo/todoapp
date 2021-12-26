@@ -1,8 +1,8 @@
 import create from "zustand";
 
 const useStore = create((set) => ({
-  isModal: false,
-  setIsModal: () => set(() => ({ isModal: true })),
+  modal: false,
+  setModal: (state) => set(() => ({ modal: state })),
 }));
 
 export default useStore;
