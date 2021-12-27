@@ -6,7 +6,6 @@ import noTodoImg from "./assets/exploring.svg";
 
 function App() {
   const state = useStore();
-  console.log(state.todos);
 
   return (
     <div className="max-w-5xl m-auto p-4">
@@ -20,7 +19,9 @@ function App() {
         </div>
       ) : (
         state.todos.map((todo, i) => {
-          return <Todo key={i} text={todo.title} />;
+          return (
+            <Todo key={i} id={todo.id} text={todo.title} status={todo.status} />
+          );
         })
       )}
     </div>

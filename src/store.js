@@ -15,6 +15,19 @@ const useStore = create((set) => ({
         ...state.todos,
       ],
     })),
+  updateTodo: (_updateTodo, id) =>
+    set((state) => ({
+      todos: state.todos.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            status: _updateTodo,
+          };
+        } else {
+          return item;
+        }
+      }),
+    })),
   removeTodo: (id) =>
     set((state) => ({ todos: state.todos.filter((todo, i) => i !== id) })),
 }));
