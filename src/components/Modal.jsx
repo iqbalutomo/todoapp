@@ -35,7 +35,7 @@ const Modal = () => {
           />
           <button
             onClick={() => {
-              state.addTodo(todo);
+              state.addTodo(todo, false);
               state.setModal(false);
             }}
             className="bg-tertiary py-2 px-2 rounded-md"

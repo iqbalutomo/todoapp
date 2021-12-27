@@ -3,12 +3,12 @@ import useStore from "../store";
 import Modal from "./Modal";
 
 const Navbar = () => {
-  const modal = useStore();
+  const state = useStore();
 
   return (
     <div className="flex justify-between items-center mb-10">
       <h1 className="font-logo text-5xl font-bold text-white">Todolist</h1>
-      <button className="text-white" onClick={() => modal.setModal(true)}>
+      <button className="text-white" onClick={() => state.setModal(true)}>
         <svg
           class="w-10 h-10"
           fill="none"

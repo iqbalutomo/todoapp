@@ -5,12 +5,13 @@ import useStore from "./store";
 import noTodoImg from "./assets/exploring.svg";
 
 function App() {
-  const todos = useStore((state) => state.todos);
+  const state = useStore();
+  console.log(state.todos);
 
   return (
     <div className="max-w-5xl m-auto p-4">
       <Navbar />
-      {todos.length === 0 ? (
+      {state.todos.length === 0 ? (
         <div className="text-center text-white text-xl">
           <div className="flex justify-evenly my-20">
             <img src={noTodoImg} width={250} />
@@ -18,8 +19,8 @@ function App() {
           <h1>No todo yet</h1>
         </div>
       ) : (
-        todos.map((todo, i) => {
-          return <Todo key={i} text={todo} />;
+        state.todos.map((todo, i) => {
+          return <Todo key={i} text={todo.title} />;
         })
       )}
     </div>
