@@ -4,10 +4,15 @@ import useStore from "../store";
 const Todo = ({ id, text, status }) => {
   const [isModal, setIsModal] = useState(false);
   const state = useStore();
-  console.log("status: ", status);
 
   return (
     <>
+      {isModal && (
+        <div
+          onClick={() => setIsModal(!isModal)}
+          className="absolute top-0 left-0 z-10 h-full w-full"
+        ></div>
+      )}
       <div className="flex justify-between items-center">
         <div
           onClick={() => state.updateTodo(!status, id)}
@@ -43,11 +48,11 @@ const Todo = ({ id, text, status }) => {
             </svg>
           </button>
           {isModal && (
-            <div className="absolute top-8 right-0 z-10 bg-secondary p-2 rounded-lg">
+            <div className="absolute top-8 right-0 bg-secondary p-2 rounded-lg z-10">
               <ul>
                 <li className="mb-2">
                   <div
-                    onClick={() => alert("edit")}
+                    onClick={() => state.setModal(true, "update", text, id)}
                     className="flex text-orange-400"
                   >
                     <svg

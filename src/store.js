@@ -1,9 +1,20 @@
+import { number } from "prop-types";
 import create from "zustand";
 
 const useStore = create((set) => ({
   modal: false,
-  setModal: (state) => set(() => ({ modal: state })),
-  todos: [],
+  typeModal: "",
+  idTodo: number,
+  value: "",
+  setModal: (state, type, title, id) =>
+    set(() => ({ modal: state, typeModal: type, value: title, idTodo: id })),
+  todos: [
+    {
+      id: 1,
+      title: "Cloud Bread",
+      status: true,
+    },
+  ],
   addTodo: (newTodo, status) =>
     set((state) => ({
       todos: [
@@ -19,10 +30,17 @@ const useStore = create((set) => ({
     set((state) => ({
       todos: state.todos.map((item) => {
         if (item.id === id) {
-          return {
-            ...item,
-            status: _updateTodo,
-          };
+          if (typeof _updateTodo === "boolean") {
+            return {
+              ...item,
+              status: _updateTodo,
+            };
+          } else if (typeof _updateTodo === "string") {
+            return {
+              ...item,
+              title: _updateTodo,
+            };
+          }
         } else {
           return item;
         }
