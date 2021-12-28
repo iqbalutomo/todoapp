@@ -47,7 +47,7 @@ const useStore = create((set) => ({
       }),
     })),
   removeTodo: (id) =>
-    set((state) => ({ todos: state.todos.filter((todo, i) => i !== id) })),
+    set((state) => ({ todos: state.todos.filter((todo) => todo.id !== id) })),
 }));
 
 export default useStore;

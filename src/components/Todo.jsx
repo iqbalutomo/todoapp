@@ -74,7 +74,7 @@ const Todo = ({ id, text, status }) => {
                 </li>
                 <li>
                   <div
-                    onClick={() => alert("delete")}
+                    onClick={() => state.removeTodo(id)}
                     className="flex text-red-400"
                   >
                     <svg
