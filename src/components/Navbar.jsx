@@ -9,7 +9,7 @@ const Navbar = () => {
     <div className="flex justify-between items-center mb-10">
       <h1 className="font-logo text-5xl font-bold text-white">Todolist</h1>
       <button
-        className="text-white"
+        className="text-white transition duration-150 md:hover:scale-110"
         onClick={() => state.setModal(true, "add")}
       >
         <svg

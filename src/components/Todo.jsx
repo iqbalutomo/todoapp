@@ -13,15 +13,18 @@ const Todo = ({ id, text, status }) => {
           className="absolute top-0 left-0 z-10 h-full w-full"
         ></div>
       )}
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between md:justify-center items-center md:ml-14">
         <div
           onClick={() => state.updateTodo(!status, id)}
-          className="flex justify-between text-white border-2 border-secondary rounded-xl p-2 mb-2"
+          className={
+            "flex justify-between text-white border-2 border-tertiary md:hover:border-opacity-75 rounded-xl p-2 mb-2 md:cursor-pointer " +
+            (status && "border-opacity-25")
+          }
         >
           <h1
             className={
               "grow w-72 font-bold" +
-              (status ? " font-normal line-through opacity-50" : "")
+              (status ? " font-normal line-through opacity-25" : "")
             }
           >
             {text}
@@ -30,7 +33,7 @@ const Todo = ({ id, text, status }) => {
         <div className="relative">
           <button
             onClick={() => setIsModal(!isModal)}
-            className="text-secondary"
+            className="md:ml-2 text-secondary md:hover:text-tertiary border-2 border-transparent md:hover:border-2 md:rounded-full md:hover:border-secondary md:hover:bg-secondary"
           >
             <svg
               class="w-6 h-6"
@@ -50,7 +53,7 @@ const Todo = ({ id, text, status }) => {
           {isModal && (
             <div className="absolute top-8 right-0 bg-secondary p-2 rounded-lg z-10">
               <ul>
-                <li className="mb-2">
+                <li className="mb-2 md:cursor-pointer md:hover:bg-tertiary md:rounded-md md:px-0.5">
                   <div
                     onClick={() => state.setModal(true, "update", text, id)}
                     className="flex text-orange-400"
@@ -72,9 +75,12 @@ const Todo = ({ id, text, status }) => {
                     <p className="text-white">Edit</p>
                   </div>
                 </li>
-                <li>
+                <li className="md:cursor-pointer md:hover:bg-tertiary md:rounded-md md:px-0.5">
                   <div
-                    onClick={() => state.removeTodo(id)}
+                    onClick={() => {
+                      state.removeTodo(id);
+                      setIsModal(false);
+                    }}
                     className="flex text-red-400"
                   >
                     <svg

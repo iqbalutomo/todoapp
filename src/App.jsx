@@ -8,7 +8,7 @@ function App() {
   const state = useStore();
 
   return (
-    <div className="max-w-5xl m-auto p-4">
+    <div className="max-w-5xl md:max-w-2xl m-auto p-4">
       <Navbar />
       {state.todos.length === 0 ? (
         <div className="text-center text-white text-xl">

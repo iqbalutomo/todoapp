@@ -12,7 +12,7 @@ const Modal = () => {
 
   return state.modal ? (
     <div className="h-full w-full absolute top-0 right-0 bg-black bg-opacity-50 z-20">
-      <div className="my-48 bg-secondary text-white mx-4 p-4 rounded-xl">
+      <div className="md:max-w-lg my-48 md:mx-auto bg-secondary text-white mx-4 p-4 rounded-xl">
         <div className="flex justify-between mb-5">
           <h1 className="text-lg font-bold">
             {state.typeModal === "add" ? "Add Todo" : "Update Todo"}
@@ -39,19 +39,17 @@ const Modal = () => {
             type="text"
             onChange={(e) => setTodo(e.target.value)}
             value={state.typeModal === "update" ? todo : null}
-            className={
-              "text-black text-2xl rounded-md " +
-              (state.typeModal === "update" && "w-60")
-            }
+            className="text-secondary caret-secondary selection:bg-secondary selection:text-white text-xl rounded-md w-5/6 p-2"
           />
           <button
             onClick={() => {
               state.typeModal === "add"
                 ? state.addTodo(todo, false)
                 : state.updateTodo(todo, state.idTodo);
+
               state.setModal(false);
             }}
-            className="bg-tertiary py-2 px-2 rounded-md font-bold"
+            className="bg-tertiary py-2 px-2 rounded-md font-bold w-2/6 md:hover:bg-opacity-90"
           >
             {state.typeModal === "add" ? "Add" : "Update"}
           </button>

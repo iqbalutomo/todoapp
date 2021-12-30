@@ -8,13 +8,7 @@ const useStore = create((set) => ({
   value: "",
   setModal: (state, type, title, id) =>
     set(() => ({ modal: state, typeModal: type, value: title, idTodo: id })),
-  todos: [
-    {
-      id: 1,
-      title: "Cloud Bread",
-      status: true,
-    },
-  ],
+  todos: [],
   addTodo: (newTodo, status) =>
     set((state) => ({
       todos: [
@@ -48,6 +42,8 @@ const useStore = create((set) => ({
     })),
   removeTodo: (id) =>
     set((state) => ({ todos: state.todos.filter((todo) => todo.id !== id) })),
+  typeButton: false,
+  setTypeButton: (state) => set(() => ({ typeButton: state })),
 }));
 
 export default useStore;
